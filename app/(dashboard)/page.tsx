@@ -1,11 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { UserButton } from "@clerk/nextjs";
+
 
 
 export default function Home() {
   return (
-    <UserButton {...({ afterSignOutUrl: "/sign-in" } as any)} />
+    <div>
+      Dashboard Page
+    </div>
 
   );
 }
