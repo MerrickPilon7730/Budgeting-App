@@ -43,7 +43,6 @@ const app = new Hono()
 
         const values = c.req.valid("json");
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const data = await db
             .insert(accounts)
             .values({
