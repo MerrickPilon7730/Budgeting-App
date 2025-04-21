@@ -3,12 +3,40 @@
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { 
+    Card, 
+    CardContent, 
+    CardHeader, 
+    CardTitle,
+} from "@/components/ui/card"
 import { Plus } from "lucide-react";
+import { Payment } from "./columns";
+
+async function getData(): Promise<Payment[]> {
+    return [
+      {
+        id: "728ed52f",
+        amount: 100,
+        status: "pending",
+        email: "m@example.com",
+      },
+    ]
+}
+
+const data = [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+  ]
 
 const AccountsPage = () => {
 
     const  newAccount  = useNewAccount();
+
+    
 
     return (
         <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">

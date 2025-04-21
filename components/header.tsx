@@ -2,7 +2,13 @@
 
 import { Navigation } from "./navigation"
 import { HeaderLogo } from "./header-logo"
-import { UserButton, ClerkLoaded, ClerkLoading } from "@clerk/nextjs"
+
+import { 
+    UserButton, 
+    ClerkLoaded, 
+    ClerkLoading, 
+} from "@clerk/nextjs"
+
 import { Loader2 } from "lucide-react";
 import { WelcomeMsg } from "./welcome-msg"
 
