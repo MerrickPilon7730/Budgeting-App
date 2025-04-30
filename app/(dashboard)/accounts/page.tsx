@@ -1,9 +1,12 @@
 "use client";
 
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
+import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
+import { useBulkDeleteAccount } from "@/features/accounts/api/use-bulk-delete";
 
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/data-table";
+import { Skeleton } from "@/components/ui/skeleton";
 import { 
     Card, 
     CardContent, 
@@ -11,33 +14,41 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
-import { Plus } from "lucide-react";
+import { Loader2, Plus } from "lucide-react";
 
 import { 
     columns, 
-    Payment, 
+    //Payment, 
 } from "./columns";
 
 
-const data: Payment[] = [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "Pending",
-      email: "m@example.com",
-    },
-    {
-      id: "10160",
-      amount: 200,
-      status: "Success",
-      email: "a@example.com",
-    }
-  ]
 
 const AccountsPage = () => {
+    const newAccount = useNewAccount();
+    const deleteAccounts = useBulkDeleteAccount();
+    const accountQuery = useGetAccounts();
+    const accounts = accountQuery.data || [];
 
-    const  newAccount  = useNewAccount();
+    const isDisabled =
+        accountQuery.isLoading || deleteAccounts.isPending;
 
+    if(accountQuery.isLoading) {
+        return (
+            <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
+                <Card className="border-none drop-shadow-sm">
+                    <CardHeader>
+                        <Skeleton className="h-8 w-48"/>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="h-[500px] w-full flec items-center justify-center">
+                            <Loader2 className="size-6 text-slate-300 animate-spin" />
+                        </div>
+                    </CardContent>
+                </Card>  
+            </div>
+        );
+    }
+ 
     return (
         <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
             <Card className="border-none drop-shadow-sm">
@@ -52,8 +63,8 @@ const AccountsPage = () => {
                     </Button>
                 </CardHeader>
 
-                <CardContent className="">
-                    <DataTable columns={columns} data={data} filterKey="email" onDelete={() => {}} disabled={false}/>
+                <CardContent>
+                    <DataTable columns={columns} data={accounts} filterKey="email" onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteAccounts.mutate({ids});}} disabled={isDisabled}/>
                 </CardContent>
                 
             </Card>  

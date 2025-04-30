@@ -3,15 +3,13 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 
+import { InferResponseType } from "hono"
+import { client } from "@/lib/hono"
+
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 
-export type Payment = {
-  id: string
-  amount: number
-  status: "Pending" | "Processing" | "Success" | "Failed"
-  email: string
-}
+export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0];
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -35,42 +33,14 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "amount",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Amount
+          Name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
