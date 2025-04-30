@@ -19,17 +19,17 @@ import {
 } from "./columns";
 
 
-const data = [
+const data: Payment[] = [
     {
       id: "728ed52f",
       amount: 100,
-      status: "pending",
+      status: "Pending",
       email: "m@example.com",
     },
     {
       id: "10160",
       amount: 200,
-      status: "success",
+      status: "Success",
       email: "a@example.com",
     }
   ]
@@ -53,11 +53,10 @@ const AccountsPage = () => {
                 </CardHeader>
 
                 <CardContent className="">
-                    <DataTable columns={columns} data={data} />
+                    <DataTable columns={columns} data={data} filterKey="email" onDelete={() => {}} disabled={false}/>
                 </CardContent>
                 
-            </Card>
-            
+            </Card>  
         </div>
     );
 };
