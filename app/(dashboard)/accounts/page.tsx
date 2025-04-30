@@ -3,25 +3,21 @@
 import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
 
 import { Button } from "@/components/ui/button";
+import { DataTable } from "@/components/data-table";
 import { 
     Card, 
     CardContent, 
     CardHeader, 
     CardTitle,
 } from "@/components/ui/card"
-import { Plus } from "lucide-react";
-import { Payment } from "./columns";
 
-async function getData(): Promise<Payment[]> {
-    return [
-      {
-        id: "728ed52f",
-        amount: 100,
-        status: "pending",
-        email: "m@example.com",
-      },
-    ]
-}
+import { Plus } from "lucide-react";
+
+import { 
+    columns, 
+    Payment, 
+} from "./columns";
+
 
 const data = [
     {
@@ -30,13 +26,17 @@ const data = [
       status: "pending",
       email: "m@example.com",
     },
+    {
+      id: "10160",
+      amount: 200,
+      status: "success",
+      email: "a@example.com",
+    }
   ]
 
 const AccountsPage = () => {
 
     const  newAccount  = useNewAccount();
-
-    
 
     return (
         <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
@@ -51,6 +51,10 @@ const AccountsPage = () => {
                         Add New
                     </Button>
                 </CardHeader>
+
+                <CardContent className="">
+                    <DataTable columns={columns} data={data} />
+                </CardContent>
                 
             </Card>
             
