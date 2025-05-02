@@ -21,8 +21,8 @@ type Props = {
 
 export const Actions = ({ id }: Props) => {
     const [ConfirmDialog, confirm] = useConfirm(
-        "Delete Transaction",
-        "Are you sure you want to delete this transaction? This action cannot be undone."
+        "Delete Account",
+        "Are you sure you want to delete this account? This action cannot be undone."
     );
     const deleteMutation = useDeleteAccount(id);
     const { onOpen } = useOpenAccount();

@@ -19,20 +19,20 @@ import { Loader2, Plus } from "lucide-react";
 import { 
     columns, 
     //Payment, 
-} from "./columns";
+} from "./account-columns";
 
 
 
 const AccountsPage = () => {
     const newAccount = useNewAccount();
     const deleteAccounts = useBulkDeleteAccount();
-    const accountQuery = useGetAccounts();
-    const accounts = accountQuery.data || [];
+    const accountsQuery = useGetAccounts();
+    const accounts = accountsQuery.data || [];
 
     const isDisabled =
-        accountQuery.isLoading || deleteAccounts.isPending;
+        accountsQuery.isLoading || deleteAccounts.isPending;
 
-    if(accountQuery.isLoading) {
+    if(accountsQuery.isLoading) {
         return (
             <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
                 <Card className="border-none drop-shadow-sm">
