@@ -9,9 +9,11 @@ import { client } from "@/lib/hono"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 
+import { Actions } from "./actions"
+
 export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0];
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<ResponseType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -45,5 +47,11 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       )
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      return <Actions id={row.original.id}/>
+    }
   },
 ]
