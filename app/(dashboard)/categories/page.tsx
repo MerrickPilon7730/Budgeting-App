@@ -23,7 +23,7 @@ import {
 
 
 
-const AccountsPage = () => {
+const CategoriesPage = () => {
     const newAccount = useNewAccount();
     const deleteAccounts = useBulkDeleteAccount();
     const accountQuery = useGetAccounts();
@@ -54,7 +54,7 @@ const AccountsPage = () => {
             <Card className="border-none drop-shadow-sm">
                 <CardHeader className="flex gap-y-2 lg:flex-row lg:items-center lg:justify-between">
                     <CardTitle className="text-xl line-clamp-1">
-                        AccountsPage
+                        Categories Page
                     </CardTitle>
 
                     <Button onClick={newAccount.onOpen} size="sm">
@@ -72,4 +72,4 @@ const AccountsPage = () => {
     );
 };
 
-export default AccountsPage
+export default CategoriesPage
