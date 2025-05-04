@@ -19,7 +19,7 @@ import { Loader2, Plus } from "lucide-react";
 import { 
     columns, 
     //Payment, 
-} from "./categories-columns";
+} from "./category-columns";
 
 
 
