@@ -16,6 +16,7 @@ import {
 
 import { useState } from "react";
 import { Loader2, Plus, } from "lucide-react";
+import { transactions as transactionSchema } from "@/db/schema";
 
 import { columns } from "./components/transaction-columns";
 import { UploadButton } from "./components/upload-button";
@@ -51,8 +52,13 @@ const TransactionsPage = () => {
     const transactionsQuery = useGetTransactions();
     const transactions = transactionsQuery.data || [];
 
-    const isDisabled =
-        transactionsQuery.isLoading || deleteTransactions.isPending;
+    const isDisabled = transactionsQuery.isLoading || deleteTransactions.isPending;
+
+    const onSubitImport = async (
+        values: typeof transactionSchema.$inferInsert[]
+    ) => {
+        
+    };
 
     if(transactionsQuery.isLoading) {
         return (
@@ -74,7 +80,7 @@ const TransactionsPage = () => {
     if (variant === VARIANTS.IMPORT) {
         return (
             <>
-                <ImportCard data={importResults.data} oncancel={onCancelImport} onsubmit={() => {}}/>
+                <ImportCard data={importResults.data} oncancel={onCancelImport} onsubmit={onSubitImport}/>
             </>
         )
     }
