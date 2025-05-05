@@ -14,9 +14,11 @@ export function convertMiliunitsToAmount (amount: number) {
 }
 
 export function formatCurrency(value: number) {
+  const finalValue = convertMiliunitsToAmount(value);
+
   return Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 2
-  }).format(value);
+  }).format(finalValue);
 };
