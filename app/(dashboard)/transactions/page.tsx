@@ -64,7 +64,7 @@ const TransactionsPage = () => {
                 </CardHeader>
 
                 <CardContent>
-                    <DataTable columns={columns} data={transactions} filterKey="name" onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} disabled={isDisabled}/>
+                    <DataTable columns={columns} data={transactions} filterKey="payee" onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} disabled={isDisabled}/>
                 </CardContent>
                 
             </Card>  
