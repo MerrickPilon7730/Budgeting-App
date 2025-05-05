@@ -1,8 +1,8 @@
 "use client";
 
-import { useNewCategory } from "@/features/categories/hooks/use-new-category";
-import { useGetCategories } from "@/features/categories/api/use-get-categories";
-import { useBulkDeleteCategories } from "@/features/categories/api/use-bulk-delete-categories";
+import { useNewTransaction } from "@/features/transactions/hooks/use-new-transaction";
+import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
+import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
 
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/data-table";
@@ -19,22 +19,22 @@ import { Loader2, Plus } from "lucide-react";
 import { 
     columns, 
     //Payment, 
-} from "./category-columns";
+} from "./transaction-columns";
 
 
 
-const CategoriesPage = () => {
-    const newCategory = useNewCategory();
-    const deleteCategories = useBulkDeleteCategories();
-    const categoryQuery = useGetCategories();
-    const categories = categoryQuery.data || [];
+const TransactionsPage = () => {
+    const newTransaction = useNewTransaction();
+    const deleteTransactions = useBulkDeleteTransactions();
+    const transactionsQuery = useGetTransactions();
+    const transactions = transactionsQuery.data || [];
 
     const isDisabled =
-    categoryQuery.isLoading || deleteCategories.isPending;
+        transactionsQuery.isLoading || deleteTransactions.isPending;
 
-    if(categoryQuery.isLoading) {
+    if(transactionsQuery.isLoading) {
         return (
-            <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
+            <div className="max-w-2x1 mx-auto w-full pb-10 -mt-24">
                 <Card className="border-none drop-shadow-sm">
                     <CardHeader>
                         <Skeleton className="h-8 w-48"/>
@@ -54,17 +54,17 @@ const CategoriesPage = () => {
             <Card className="border-none drop-shadow-sm">
                 <CardHeader className="flex gap-y-2 lg:flex-row lg:items-center lg:justify-between">
                     <CardTitle className="text-xl line-clamp-1">
-                        Categories Page
+                        Transaction History
                     </CardTitle>
 
-                    <Button onClick={newCategory.onOpen} size="sm">
+                    <Button onClick={newTransaction.onOpen} size="sm">
                         <Plus className="size-4 mr-2" />
                         Add New
                     </Button>
                 </CardHeader>
 
                 <CardContent>
-                    <DataTable columns={columns} data={categories} filterKey="name" onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteCategories.mutate({ids});}} disabled={isDisabled}/>
+                    <DataTable columns={columns} data={transactions} filterKey="name" onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} disabled={isDisabled}/>
                 </CardContent>
                 
             </Card>  
@@ -72,4 +72,4 @@ const CategoriesPage = () => {
     );
 };
 
-export default CategoriesPage
+export default TransactionsPage;
