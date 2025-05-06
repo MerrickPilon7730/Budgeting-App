@@ -21,7 +21,7 @@ type Props = {
     }[];
 }
 
-export const BarVariant = ({ data }: Props) => {
+export const LineVariant = ({ data }: Props) => {
     return (
         <ResponsiveContainer width="100%" height={350}>
             <LineChart data={data}>
