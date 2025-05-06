@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 
-import { CustomTooltip } from "@/components/charts/custom-tooltip";
+import { TransactionsTooltip } from "@/components/charts/transactions-tooltip";
 
 
 type Props = {
@@ -34,7 +34,7 @@ export const LineVariant = ({ data }: Props) => {
                     style={{ fontSize: "12px" }}
                     tickMargin={16}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={<TransactionsTooltip />} />
                 <Line 
                     dot={false}
                     dataKey="income"
