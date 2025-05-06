@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 
 import { formatCurrency } from "@/lib/utils";
 
-export const CustomTooltip = ({ active, payload }: any) => {
+export const TransactionsTooltip = ({ active, payload }: any) => {
     if (!active) return null;
 
     const date = payload[0].payload.date;
