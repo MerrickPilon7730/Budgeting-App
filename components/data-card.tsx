@@ -10,6 +10,7 @@ import {
     CardHeader,
     CardTitle,
  } from "@/components/ui/card";
+ import { Skeleton } from "@/components/ui/skeleton";
 
 import { cn, formatCurrency, formatPercentage } from "@/lib/utils";
 
@@ -97,8 +98,26 @@ export const DataCard = ({
                     percentageChange > 0 && "text-emerald-500",
                     percentageChange < 0 && "text-rose-500"
                     )}>
-                    {formatPercentage(percentageChange)} change from last period
+                    {formatPercentage(percentageChange, { addPrefix: true })} change from last period
                 </p>
+            </CardContent>
+        </Card>
+    );
+};
+
+export const DataCardLoading = () => {
+    return (
+        <Card className="border-none drop-shadow-sm h-[192px]">
+            <CardHeader className="flex flex-row items-center justify-between gap-x-4">
+                <div className="space-y-2">
+                    <Skeleton className="h-6 w-48" />
+                    <Skeleton className="h-4 w-40"/>
+                </div>
+                <Skeleton className="size-12"/>
+            </CardHeader>
+            <CardContent>
+                <Skeleton className="h-10 w-24 mb-2 shrink-0" />
+                <Skeleton className="h-4 w-40 shrink-0"/>
             </CardContent>
         </Card>
     );
