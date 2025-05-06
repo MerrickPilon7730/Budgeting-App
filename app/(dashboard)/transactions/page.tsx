@@ -8,7 +8,7 @@ import { useBulkCreateTransactions } from "@/features/transactions/api/use-bulk-
 import { useSelectAccount } from "@/features/accounts/hooks/use-select-account";
 
 import { Button } from "@/components/ui/button";
-import { DataTable } from "@/components/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { 
     Card, 

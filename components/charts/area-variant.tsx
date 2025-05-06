@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 
-import { CustomTooltip } from "@/components/custom-tooltip";
+import { CustomTooltip } from "@/components/charts/custom-tooltip";
 
 type Props = {
     data?: {

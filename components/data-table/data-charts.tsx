@@ -1,7 +1,7 @@
 "use client";
 
 import { useGetSummary } from "@/features/summary/api/use-get-summary";
-import { Chart } from "@/components/chart";
+import { Chart } from "@/components/charts/chart";
 
 export const DataCharts = () => {
     const { data, isLoading } = useGetSummary();

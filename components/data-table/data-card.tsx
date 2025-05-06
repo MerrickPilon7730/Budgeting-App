@@ -2,7 +2,7 @@
 import { IconType } from "react-icons";
 import { VariantProps, cva } from "class-variance-authority";
 
-import { CountUp } from "@/components/count-up";
+import { CountUp } from "@/components/data-table/count-up";
 import { 
     Card,
     CardContent,

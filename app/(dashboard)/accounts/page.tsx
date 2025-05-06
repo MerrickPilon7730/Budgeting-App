@@ -5,7 +5,7 @@ import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { useBulkDeleteAccount } from "@/features/accounts/api/use-bulk-delete-accounts";
 
 import { Button } from "@/components/ui/button";
-import { DataTable } from "@/components/data-table";
+import { DataTable } from "@/components/data-table/data-table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { 
     Card, 

@@ -2,7 +2,7 @@
 
 import { useGetSummary } from "@/features/summary/api/use-get-summary";
 
-import { DataCard, DataCardLoading } from "@/components/data-card";
+import { DataCard, DataCardLoading } from "@/components/data-table/data-card";
 
 import { formatDateRange } from "@/lib/utils";
 
