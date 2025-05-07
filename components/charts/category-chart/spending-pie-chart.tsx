@@ -15,7 +15,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { PieVariant } from "@/components/charts/pie-variant";
+import { PieVariant } from "@/components/charts/category-chart/pie-variant";
 
 
 

@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 
-import { TransactionsTooltip } from "@/components/charts/transactions-tooltip";
+import { TransactionsTooltip } from "@/components/charts/transactions-chart/transactions-tooltip";
 
 
 type Props = {

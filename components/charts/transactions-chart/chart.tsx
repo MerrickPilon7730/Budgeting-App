@@ -15,9 +15,9 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { AreaVariant } from "@/components/charts/area-variant";
-import { BarVariant } from "@/components/charts/bar-variant";
-import { LineVariant } from "@/components/charts/line-variant";
+import { AreaVariant } from "@/components/charts/transactions-chart/area-variant";
+import { BarVariant } from "@/components/charts/transactions-chart/bar-variant";
+import { LineVariant } from "@/components/charts/transactions-chart/line-variant";
 
 
 type Props = {
