@@ -22,7 +22,7 @@ export const RadarVariant = ({ data }: Props) => {
             <RadarChart 
                 cx="50%" 
                 cy="50%" 
-                outerRadius="60%" 
+                outerRadius={120} 
                 data={data}
                 >
                     <PolarGrid />

@@ -16,6 +16,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { PieVariant } from "@/components/charts/category-chart/pie-variant";
+import { RadarVariant } from "@/components/charts/category-chart/radar-variant";
 
 
 
@@ -86,6 +87,7 @@ export const SpendingPieChart = ({ data = [] }: Props) => {
                 ) : (
                     <>
                         {chartType ==="pie" && <PieVariant data={data} />}
+                        {chartType ==="radar" && <RadarVariant data={data} />}
                     </>
 
                 )}
