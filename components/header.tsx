@@ -1,7 +1,6 @@
 "use client"
 
-import { Navigation } from "./navigation"
-import { HeaderLogo } from "./header-logo"
+import { Loader2 } from "lucide-react";
 
 import { 
     UserButton, 
@@ -9,8 +8,10 @@ import {
     ClerkLoading, 
 } from "@clerk/nextjs"
 
-import { Loader2 } from "lucide-react";
-import { WelcomeMsg } from "./welcome-msg"
+import { Navigation } from "@/components/navigation"
+import { HeaderLogo } from "@/components/header-logo"
+import { WelcomeMsg } from "@/components/welcome-msg"
+import { Filters } from "@/components/filters/filters";
 
 
 export const Header = () => {
@@ -31,6 +32,7 @@ export const Header = () => {
                     </ClerkLoading>
                 </div>
                 <WelcomeMsg />
+                <Filters />
             </div>
         </header>
     )
