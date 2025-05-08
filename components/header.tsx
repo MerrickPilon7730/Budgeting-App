@@ -11,7 +11,6 @@ import {
 import { Navigation } from "@/components/navigation"
 import { HeaderLogo } from "@/components/header-logo"
 import { WelcomeMsg } from "@/components/welcome-msg"
-import { Filters } from "@/components/filters/filters";
 
 
 export const Header = () => {
@@ -32,7 +31,6 @@ export const Header = () => {
                     </ClerkLoading>
                 </div>
                 <WelcomeMsg />
-                <Filters />
             </div>
         </header>
     )
