@@ -27,6 +27,7 @@ export const useDeleteTransaction = (id?: string) => {
             toast.success('Transaction deleted');
             queryClient.invalidateQueries({queryKey: ['transaction', {id} ]});
             queryClient.invalidateQueries({queryKey: ['transactions']});
+            queryClient.invalidateQueries({queryKey: ['summary']});
             //TODO: invalidate summary
         },
         onError : () => {

@@ -16,6 +16,8 @@ export const useGetAccounts = () => {
             const {data} = await response.json();
             return data;
         },
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
     })
 
     return query;

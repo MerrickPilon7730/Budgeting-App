@@ -21,6 +21,8 @@ export const useGetAccount = (id?: string) => {
             const {data} = await response.json();
             return data;
         },
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
     })
 
     return query;
