@@ -24,14 +24,19 @@ import {
 
 
 const AccountsPage = () => {
+    // hook to open new account form
     const newAccount = useNewAccount();
+    // hook to trigger bulk delete
     const deleteAccounts = useBulkDeleteAccount();
+    // hook to get accounts from backend
     const accountsQuery = useGetAccounts();
     const accounts = accountsQuery.data || [];
 
+    // disable button if accounts are or are being deleted
     const isDisabled =
         accountsQuery.isLoading || deleteAccounts.isPending;
 
+    // render skeleton if accounts are loading
     if(accountsQuery.isLoading) {
         return (
             <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
@@ -48,7 +53,8 @@ const AccountsPage = () => {
             </div>
         );
     }
- 
+    
+    // render accounts when loaded
     return (
         <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
             <Card className="border-none drop-shadow-sm">

@@ -15,18 +15,23 @@ import {
 
 import { useConfirm } from "@/hooks/use-confirm";
 
+// Props for the Actions component
 type Props = {
     id: string;
 };
 
 export const Actions = ({ id }: Props) => {
+    // Confirmation dialog for deleting a category
     const [ConfirmDialog, confirm] = useConfirm(
         "Delete Category",
         "Are you sure you want to delete this category? This action cannot be undone."
     );
+    // Mutations for deleting a category
     const deleteMutation = useDeleteCategory(id);
+    // Hook for opening the edit category sheet
     const { onOpen } = useOpenCategory();
 
+    // Function for deleting a category
     const handleDelete = async () => {
         const ok = await confirm();
 

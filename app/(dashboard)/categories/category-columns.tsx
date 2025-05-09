@@ -15,6 +15,7 @@ export type ResponseType = InferResponseType<typeof client.api.categories.$get, 
 
 export const columns: ColumnDef<ResponseType>[] = [
   {
+    // This column is for rendering a checkbox
     id: "select",
     header: ({ table }) => (
       <Checkbox
@@ -35,6 +36,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     ),
   },
   {
+    // This column is for rendering the category name
     accessorKey: "name",
     header: ({ column }) => {
       return (
@@ -49,6 +51,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // This column is for rendering the category actions (edit/delete)
     id: "actions",
     cell: ({ row }) => {
       return <Actions id={row.original.id}/>

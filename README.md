@@ -1,2 +1,2 @@
-# Finance-SaaS-Platform
- Finance
+# Budgeting App
+

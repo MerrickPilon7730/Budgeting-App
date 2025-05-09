@@ -15,18 +15,23 @@ import {
 
 import { useConfirm } from "@/hooks/use-confirm";
 
+// Props for the Actions component
 type Props = {
     id: string;
 };
 
 export const Actions = ({ id }: Props) => {
+    // Confirmation dialog for deleting a transaction
     const [ConfirmDialog, confirm] = useConfirm(
         "Delete Transaction",
         "Are you sure you want to delete this transaction? This action cannot be undone."
     );
+    // Mutations for deleting a transaction
     const deleteMutation = useDeleteTransaction(id);
+    // Hook for opening the edit transaction sheet
     const { onOpen } = useOpenTransaction();
 
+    // Function for deleting a transaction
     const handleDelete = async () => {
         const ok = await confirm();
 

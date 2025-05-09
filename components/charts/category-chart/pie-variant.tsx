@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 import {
@@ -12,7 +13,7 @@ import {
 import { formatPercentage } from "@/lib/utils";
 import { CategoryTooltip } from "@/components/charts/category-chart/category-tooltip";
 
-const COLORS = ["#0062FF", "#12C6FF", "FF647F", "#FF9354"];
+const COLORS = ["#0062FF", "#12C6FF", "#FF647F", "#FF9354"];
 
 type Props = {
     data?: {

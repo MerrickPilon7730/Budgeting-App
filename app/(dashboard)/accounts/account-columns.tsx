@@ -11,10 +11,13 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 import { Actions } from "./actions"
 
+// Infer the structure of a single account from the API response
 export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0];
 
+// Column definitions for the account table
 export const columns: ColumnDef<ResponseType>[] = [
   {
+    // This column is for rendering a checkbox
     id: "select",
     header: ({ table }) => (
       <Checkbox
@@ -35,6 +38,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     ),
   },
   {
+    // This column is for rendering the account name
     accessorKey: "name",
     header: ({ column }) => {
       return (
@@ -49,6 +53,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // This column is for rendering the account actions (edit/delete)
     id: "actions",
     cell: ({ row }) => {
       return <Actions id={row.original.id}/>

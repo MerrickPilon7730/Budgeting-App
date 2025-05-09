@@ -15,18 +15,25 @@ import {
 
 import { useConfirm } from "@/hooks/use-confirm";
 
+// Props for the Actions component
 type Props = {
     id: string;
 };
 
+// Component for account actions (edit/delete)
 export const Actions = ({ id }: Props) => {
+    // Confirmation dialog for deleting an account
     const [ConfirmDialog, confirm] = useConfirm(
         "Delete Account",
         "Are you sure you want to delete this account? This action cannot be undone."
     );
+
+    // Mutations for deleting an account
     const deleteMutation = useDeleteAccount(id);
+    // Function for opening the edit account sheet
     const { onOpen } = useOpenAccount();
 
+    // Function for deleting an account
     const handleDelete = async () => {
         const ok = await confirm();
 

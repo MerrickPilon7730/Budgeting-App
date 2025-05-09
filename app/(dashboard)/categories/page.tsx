@@ -17,21 +17,25 @@ import {
 import { Loader2, Plus } from "lucide-react";
 
 import { 
-    columns, 
-    //Payment, 
+    columns,  
 } from "./category-columns";
 
 
 
 const CategoriesPage = () => {
+    // Hook to open new category form
     const newCategory = useNewCategory();
+    // Hook to bulk delete categories
     const deleteCategories = useBulkDeleteCategories();
+    // Hook to fetch all categories
     const categoryQuery = useGetCategories();
     const categories = categoryQuery.data || [];
 
+    // disable button if categories are loading or are being deleted
     const isDisabled =
     categoryQuery.isLoading || deleteCategories.isPending;
 
+    // render skeleton if categories are loading
     if(categoryQuery.isLoading) {
         return (
             <div className="max-w-2xl mx-auto w-full pb-10 -mt-24">
@@ -49,6 +53,7 @@ const CategoriesPage = () => {
         );
     }
  
+    // render categories when loaded
     return (
         <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
             <Card className="border-none drop-shadow-sm">
