@@ -8,6 +8,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
+// Props for the TableHeadSelect component
 type Props = {
     columnIndex: number;
     selectedColumns: Record<string, string | null>;
@@ -17,17 +18,20 @@ type Props = {
     ) => void;
 };
 
+// Options for the select component
 const options =[
     "amount",
     "date",
     "payee",
 ];
 
+// 
 export const TableHeadSelect = ({
     columnIndex,
     selectedColumns,
     onChange,
 }: Props) => {
+    // Get the current selection for column
     const currentSelection = selectedColumns[`column_${columnIndex}`] || null;
 
     return (

@@ -9,7 +9,6 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 {children}
             </main>
         </>
-
     )   
 }
 

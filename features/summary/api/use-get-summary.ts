@@ -12,7 +12,6 @@ export const useGetSummary = () => {
     const accountId = searchParams.get("account_id") || "";
 
     const query = useQuery({
-        //TODO: check if params are needed in the key
         queryKey: ["summary", {from, to, accountId}],
         queryFn: async () => {
             const response = await client.api.summary.$get({

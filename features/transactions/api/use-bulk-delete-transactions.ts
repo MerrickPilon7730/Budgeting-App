@@ -30,7 +30,6 @@ export const useBulkDeleteTransactions = () => {
             toast.success('Transactions Deleted');
             queryClient.invalidateQueries({queryKey: ['transactions']});
             queryClient.invalidateQueries({queryKey: ['summary']});
-            //TODO: invalidate summary
         },
         onError : () => {
             toast.error('Failed to delete transactions');

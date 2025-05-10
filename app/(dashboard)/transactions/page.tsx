@@ -26,12 +26,13 @@ import { Loader2, Plus, } from "lucide-react";
 import { transactions as transactionSchema } from "@/db/schema";
 import { toast } from "sonner";
 
-
+// Enum for the variants of the page
 enum VARIANTS {
     LIST = "LIST",
     "IMPORT" = "IMPORT",
 }
 
+// Initial state for the import results
 const INITIAL_IMPORT_RESULTS = {
     data: [],
     errors: [],
@@ -39,28 +40,36 @@ const INITIAL_IMPORT_RESULTS = {
 };
 
 const TransactionsPage = () => {
+    // Hook to select account (dialog and confirmation handler)
     const [AccountDialog, confirm] = useSelectAccount();
+    // State for the variant of the page
     const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
+    // State for the import results (CSV)
     const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS);
 
+    // Callback for the upload button
     const onUpload = (results: typeof INITIAL_IMPORT_RESULTS) => {
         setImportResults(results);
         setVariant(VARIANTS.IMPORT);
     };
 
+    // Callback for the cancel button
     const onCancelImport = () => {
         setImportResults(INITIAL_IMPORT_RESULTS);
         setVariant(VARIANTS.LIST);
     };
 
+    // Hooks for transactions (CRUD and query)
     const newTransaction = useNewTransaction();
     const createTransactions = useBulkCreateTransactions();
     const deleteTransactions = useBulkDeleteTransactions();
     const transactionsQuery = useGetTransactions();
     const transactions = transactionsQuery.data || [];
 
+    // Disable the data table if there are loading queries or pending deletions
     const isDisabled = transactionsQuery.isLoading || deleteTransactions.isPending;
 
+    // Submit parsed CSV data as new transactions
     const onSubitImport = async (
         values: typeof transactionSchema.$inferInsert[],
     ) => {
@@ -83,6 +92,7 @@ const TransactionsPage = () => {
 
     };
 
+    // Show loading skeleton while data is being fetched
     if(transactionsQuery.isLoading) {
         return (
             <div className="max-w-2x1 mx-auto w-full pb-10 -mt-24">
@@ -100,6 +110,7 @@ const TransactionsPage = () => {
         );
     }
  
+    // If variant is IMPORT, show the import UI
     if (variant === VARIANTS.IMPORT) {
         return (
             <>
@@ -113,6 +124,7 @@ const TransactionsPage = () => {
         )
     }
 
+    // If variant is LIST, show the parsed transactions from the CSV
     return (
         <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
             <Card className="border-none drop-shadow-sm">
@@ -136,7 +148,12 @@ const TransactionsPage = () => {
                 </CardHeader>
 
                 <CardContent>
-                    <DataTable columns={columns} data={transactions} filterKey="payee" onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} disabled={isDisabled}/>
+                    <DataTable 
+                        columns={columns} 
+                        data={transactions} 
+                        filterKey="payee" 
+                        onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} 
+                        disabled={isDisabled}/>
                 </CardContent>
                 
             </Card>  

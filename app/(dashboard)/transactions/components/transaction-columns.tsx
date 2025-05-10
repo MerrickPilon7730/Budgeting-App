@@ -16,11 +16,12 @@ import { Actions } from "./actions"
 import { AccountColumn } from "./account-column"
 import { CategoryColumn } from "./category-column"
 
-
+// Infer the response type of a single transaction from the API
 export type ResponseType = InferResponseType<typeof client.api.transactions.$get, 200>["data"][0];
 
 export const columns: ColumnDef<ResponseType>[] = [
   {
+    // This column is for rendering a checkbox
     id: "select",
     header: ({ table }) => (
       <Checkbox
@@ -41,6 +42,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     ),
   },
   {
+    // Date column with sorting
     accessorKey: "date",
     header: ({ column }) => {
       return (
@@ -64,6 +66,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // Category column with sorting with fallback for missing/uncategorized categories
     accessorKey: "category",
     header: ({ column }) => {
       return (
@@ -88,6 +91,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // Payee column with sorting
     accessorKey: "payee",
     header: ({ column }) => {
       return (
@@ -102,6 +106,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // Amount column with sorting
     accessorKey: "amount",
     header: ({ column }) => {
       return (
@@ -128,6 +133,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // Account column with sorting
     accessorKey: "account",
     header: ({ column }) => {
       return (
@@ -151,6 +157,7 @@ export const columns: ColumnDef<ResponseType>[] = [
     },
   },
   {
+    // This column is for rendering the transaction actions (edit/delete)
     id: "actions",
     cell: ({ row }) => {
       return <Actions id={row.original.id}/>

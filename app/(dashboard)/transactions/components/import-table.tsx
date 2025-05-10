@@ -9,7 +9,7 @@ import {
 
 import { TableHeadSelect } from "./table-head-select";
 
-
+// Props for the ImportTable component
 type Props = {
     headers: string[];
     body: string[][];
@@ -18,6 +18,7 @@ type Props = {
 };
 
 
+// Functional component for rendering a preview table of imported CSV data
 export const ImportTable = ({
     headers,
     body,
