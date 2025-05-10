@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 
 import { formatCurrency } from "@/lib/utils";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const TransactionsTooltip = ({ active, payload }: any) => {
     if (!active) return null;
 
