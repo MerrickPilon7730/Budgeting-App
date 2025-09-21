@@ -21,7 +21,7 @@ import { columns } from "./components/transaction-columns";
 import { UploadButton } from "./components/upload-button";
 import { ImportCard } from "./components/import-card";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Loader2, Plus, } from "lucide-react";
 import { transactions as transactionSchema } from "@/db/schema";
 import { toast } from "sonner";
@@ -148,12 +148,14 @@ const TransactionsPage = () => {
                 </CardHeader>
 
                 <CardContent>
-                    <DataTable 
-                        columns={columns} 
-                        data={transactions} 
-                        filterKey="payee" 
-                        onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} 
-                        disabled={isDisabled}/>
+                    <Suspense fallback={<div>Loading table...</div>}>
+                        <DataTable 
+                            columns={columns} 
+                            data={transactions} 
+                            filterKey="payee" 
+                            onDelete={(row) => {const ids = row.map((row) => row.original.id); deleteTransactions.mutate({ids});}} 
+                            disabled={isDisabled}/>
+                    </Suspense>
                 </CardContent>
                 
             </Card>  
