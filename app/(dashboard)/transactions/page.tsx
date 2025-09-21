@@ -25,6 +25,7 @@ import { Suspense, useState } from "react";
 import { Loader2, Plus, } from "lucide-react";
 import { transactions as transactionSchema } from "@/db/schema";
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 
 // Enum for the variants of the page
 enum VARIANTS {
@@ -53,6 +54,14 @@ const TransactionsPage = () => {
         setVariant(VARIANTS.IMPORT);
     };
 
+        const searchParams = useSearchParams();
+        const from = searchParams.get("from") || "";
+        const to = searchParams.get("to") || "";
+        const accountId = searchParams.get("account_id") || "";
+
+        const transactionsQuery = useGetTransactions(from, to, accountId);
+        const transactions = transactionsQuery.data || [];
+
     // Callback for the cancel button
     const onCancelImport = () => {
         setImportResults(INITIAL_IMPORT_RESULTS);
@@ -63,8 +72,6 @@ const TransactionsPage = () => {
     const newTransaction = useNewTransaction();
     const createTransactions = useBulkCreateTransactions();
     const deleteTransactions = useBulkDeleteTransactions();
-    const transactionsQuery = useGetTransactions();
-    const transactions = transactionsQuery.data || [];
 
     // Disable the data table if there are loading queries or pending deletions
     const isDisabled = transactionsQuery.isLoading || deleteTransactions.isPending;
